@@ -8,7 +8,8 @@ function BookingHistory() {
   const [loading, setLoading] = useState(false);
 
   // Get MongoDB _id of the logged-in user from localStorage
- const [userId] = useState('user_6ybnb3ist'); // replace with real userId
+ const [userId] = useState('user_nfdt42u3o'); // use an actual userId from your DB
+ // replace with real userId
 // replace with real userId
 
   // Make sure this is set at login as the actual MongoDB _id
