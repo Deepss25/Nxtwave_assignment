@@ -7,10 +7,10 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
-        changeOrigin: true
+        target: 'https://nxtwave-assignment-2.onrender.com',
+        changeOrigin: true,
+        secure: true  // required for HTTPS
       }
     }
   }
 })
-

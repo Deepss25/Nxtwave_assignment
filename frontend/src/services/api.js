@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = '/api';
+// Use your Render backend URL directly
+const API_BASE_URL = 'https://nxtwave-assignment-2.onrender.com';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -58,4 +59,3 @@ export const adminUpdatePricingRule = (id, ruleData) => api.put(`/admin/pricing-
 export const adminDeletePricingRule = (id) => api.delete(`/admin/pricing-rules/${id}`);
 
 export default api;
-
