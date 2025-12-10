@@ -6,19 +6,19 @@ import './BookingHistory.css';
 function BookingHistory() {
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [userId] = useState(() => {
-    // In a real app, this would come from auth context
-    return localStorage.getItem('userId') || 'user_' + Math.random().toString(36).substr(2, 9);
-  });
+
+  // Get MongoDB _id of the logged-in user from localStorage
+  const [userId] = useState(() => localStorage.getItem('userId')); 
+  // Make sure this is set at login as the actual MongoDB _id
 
   useEffect(() => {
-    loadBookings();
-  }, []);
+    if (userId) loadBookings();
+  }, [userId]);
 
   const loadBookings = async () => {
     try {
       setLoading(true);
-      const res = await getUserBookings(userId);
+      const res = await getUserBookings(userId); // API should filter by MongoDB _id
       setBookings(res.data);
     } catch (err) {
       console.error('Failed to load bookings:', err);
@@ -28,9 +28,7 @@ function BookingHistory() {
   };
 
   const handleCancel = async (bookingId) => {
-    if (!window.confirm('Are you sure you want to cancel this booking?')) {
-      return;
-    }
+    if (!window.confirm('Are you sure you want to cancel this booking?')) return;
 
     try {
       await cancelBooking(bookingId);
@@ -62,9 +60,7 @@ function BookingHistory() {
               >
                 <div className="booking-header">
                   <h3>{booking.court?.name}</h3>
-                  <span className={`status-badge ${booking.status}`}>
-                    {booking.status}
-                  </span>
+                  <span className={`status-badge ${booking.status}`}>{booking.status}</span>
                 </div>
 
                 <div className="booking-details">
@@ -74,16 +70,14 @@ function BookingHistory() {
                   </div>
                   <div className="detail-row">
                     <span className="label">Time:</span>
-                    <span>
-                      {booking.startTime} - {booking.endTime}
-                    </span>
+                    <span>{booking.startTime} - {booking.endTime}</span>
                   </div>
                   <div className="detail-row">
                     <span className="label">Court Type:</span>
                     <span className="capitalize">{booking.court?.type}</span>
                   </div>
 
-                  {booking.equipment && booking.equipment.length > 0 && (
+                  {booking.equipment?.length > 0 && (
                     <div className="detail-row">
                       <span className="label">Equipment:</span>
                       <span>
@@ -145,4 +139,3 @@ function BookingHistory() {
 }
 
 export default BookingHistory;
-
