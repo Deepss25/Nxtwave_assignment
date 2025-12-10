@@ -1,0 +1,137 @@
+.booking-history {
+  min-height: calc(100vh - 80px);
+  padding: 2rem;
+  background: #f5f5f5;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.booking-history h1 {
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.empty-state {
+  background: white;
+  padding: 3rem;
+  text-align: center;
+  border-radius: 12px;
+  color: #666;
+}
+
+.bookings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.booking-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.booking-card.cancelled {
+  opacity: 0.6;
+}
+
+.booking-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.booking-header h3 {
+  margin: 0;
+  color: #333;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.status-badge.confirmed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status-badge.cancelled {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.booking-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label {
+  font-weight: 500;
+  color: #666;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.price {
+  font-weight: bold;
+  color: #667eea;
+  font-size: 1.1rem;
+}
+
+.price-breakdown-details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #eee;
+}
+
+.price-breakdown-details summary {
+  cursor: pointer;
+  color: #667eea;
+  font-weight: 500;
+}
+
+.breakdown-content {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.breakdown-content .multiplier {
+  color: #999;
+}
+
+.cancel-button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cancel-button:hover {
+  background: #c82333;
+}
+
