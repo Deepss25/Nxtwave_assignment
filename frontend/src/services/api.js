@@ -25,7 +25,9 @@ export const getCoaches = () => api.get('/coaches');
 
 // Bookings
 export const createBooking = (bookingData) => api.post('/bookings', bookingData);
-export const getUserBookings = (userId) => api.get(`/bookings/user/${userId}`);
+// Bookings
+export const getAllBookings = () => api.get('/bookings'); // fetch all bookings
+
 export const cancelBooking = (bookingId) => api.patch(`/bookings/${bookingId}/cancel`);
 export const calculatePrice = (priceData) => api.post('/bookings/calculate-price', priceData);
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-import { getUserBookings, cancelBooking } from '../services/api';
+import { getAllBookings, cancelBooking } from '../services/api';
 import './BookingHistory.css';
 
 function BookingHistory() {
@@ -8,7 +8,7 @@ function BookingHistory() {
   const [loading, setLoading] = useState(false);
 
   // Get MongoDB _id of the logged-in user from localStorage
-const [userId] = useState(() => localStorage.getItem('userId'));
+//const [userId] = useState(() => localStorage.getItem('userId'));
  // use an actual userId from your DB
  // replace with real userId
 // replace with real userId
@@ -22,7 +22,7 @@ const [userId] = useState(() => localStorage.getItem('userId'));
   const loadBookings = async () => {
     try {
       setLoading(true);
-      const res = await getUserBookings(userId); // API should filter by MongoDB _id
+      const res = await getAllBookings(); // API should filter by MongoDB _id
       setBookings(res.data);
     } catch (err) {
       console.error('Failed to load bookings:', err);
